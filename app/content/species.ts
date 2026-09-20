@@ -16,4 +16,15 @@ export const species = {
   'laughing-dove': { name: 'Laughing Dove' },
   'pale-billed-flowerpecker': { name: 'Pale-billed Flowerpecker' },
   'yellow-billed-babbler': { name: 'Yellow-billed Babbler' },
+  'ashy-prinia': { name: 'Ashy Prinia' },
+  'asian-green-bee-eater': { name: 'Asian Green Bee-Eater' },
+  'common-myna': { name: 'Common Myna' },
+  'coppersmith-barbet': { name: 'Coppersmith Barbet' },
+  'greater-coucal': { name: 'Greater Coucal' },
+  'indian-peafowl': { name: 'Indian Peafowl' },
+  'little-grebe': { name: 'Little Grebe' },
+  'rose-ringed-parakeet': { name: 'Rose-ringed Parakeet' },
+  'tickells-blue-flycatcher': { name: "Tickell's Blue Flycatcher" },
+  'white-browed-wagtail': { name: 'White-browed Wagtail' },
+  'white-cheeked-barbet': { name: 'White-cheeked Barbet' }
 } satisfies Record<string, { name: string }>;
