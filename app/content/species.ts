@@ -41,5 +41,10 @@ export const species = {
   'scaly-breasted-munia': { name: 'Scaly-breasted Munia' },
   'spot-billed-pelican': { name: 'Spot-billed Pelican' },
   'spotted-dove': { name: 'Spotted Dove' },
-  'white-breasted-waterhen': { name: 'White-breasted Waterhen' }
+  'white-breasted-waterhen': { name: 'White-breasted Waterhen' },
+  'common-tailorbird': { name: 'Common Tailorbird' },
+  'glossy-ibis': { name: 'Glossy Ibis' },
+  'gray-wagtail': { name: 'Gray Wagtail' },
+  'painted-stork': { name: 'Painted Stork' },
+  'purple-sunbird': { name: 'Purple Sunbird' }
 } satisfies Record<string, { name: string }>;
