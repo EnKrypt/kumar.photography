@@ -13,6 +13,14 @@ export const landing: Landing = {
     overlay: 'right'
   },
   images: [
+    '2026-09-13-white-cheeked-barbet-2',
+    '2026-09-13-purple-rumped-sunbird-2',
+    '2026-09-13-glossy-ibis',
+    '2026-09-13-purple-sunbird-1',
+    '2026-09-13-painted-stork-2',
+    '2026-09-13-pied-bushchat-2',
+    '2026-09-13-common-myna',
+    '2026-09-13-gray-wagtail',
     '2026-09-06-black-drongo-1',
     '2026-09-06-brahminy-kite-6',
     '2026-09-06-ashy-prinia',
