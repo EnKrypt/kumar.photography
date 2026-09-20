@@ -16,6 +16,7 @@ export type ImageVariants = {
 
 export type ImageEntry = {
   id: string;
+  date: string | null;
   alt: string;
   species: { slug: SpeciesSlug; name: string };
   location: { slug: LocationSlug; name: string };

@@ -1,6 +1,5 @@
 import type { ComponentType } from "react";
 import * as aboutModule from "~/content/about.mdx";
-import * as stats from "~/content/stats.json";
 import { landing } from "~/content/landing";
 import { locations } from "~/content/locations";
 import { site } from "~/content/site";
@@ -90,6 +89,7 @@ function buildImages(): Map<string, ImageEntry> {
 
     result.set(id, {
       id,
+      date: /^(\d{4}-\d{2}-\d{2})/.exec(id)?.[1] ?? null,
       alt: caption || `${speciesName} at ${locationName}`,
       species: { slug: sp as SpeciesSlug, name: speciesName },
       location: { slug: loc as LocationSlug, name: locationName },
@@ -117,7 +117,20 @@ getImage(landing.title.image, "landing.tsx title.image");
 landing.images.forEach((id) => getImage(id, "landing.tsx images"));
 
 const newestFirst = (a: ImageEntry, b: ImageEntry) =>
-  b.id.localeCompare(a.id, "en", { numeric: true });
+  (b.date ?? "").localeCompare(a.date ?? "") || a.id.localeCompare(b.id, "en", { numeric: true });
+
+export function recentImages(count: number): ImageEntry[] {
+  if (count <= 0) return [];
+  const newest: ImageEntry[] = [];
+  for (const image of images.values()) {
+    if (newest.length === count && newestFirst(image, newest[count - 1]) >= 0) continue;
+    let i = newest.length;
+    while (i > 0 && newestFirst(image, newest[i - 1]) < 0) i--;
+    newest.splice(i, 0, image);
+    if (newest.length > count) newest.pop();
+  }
+  return newest;
+}
 
 export function imagesForSpecies(slug: string): ImageEntry[] {
   return [...images.values()].filter((i) => i.species.slug === slug).sort(newestFirst);
@@ -131,6 +144,12 @@ export type SearchItem = { slug: string; name: string; href: string };
 
 const usedSpecies = new Set<string>([...images.values()].map((i) => i.species.slug));
 const usedLocations = new Set<string>([...images.values()].map((i) => i.location.slug));
+
+export const totals = {
+  species: usedSpecies.size,
+  locations: usedLocations.size,
+  photos: images.size,
+};
 
 export const speciesSearch: SearchItem[] = Object.entries(species)
   .filter(([slug]) => usedSpecies.has(slug))
@@ -153,7 +172,6 @@ function buildAbout() {
     Caption: aboutModule.default,
     alt: `Portrait of ${site.name}`,
     variants: toVariants(pic, "about.mdx photo"),
-    stats,
   };
 }
 
