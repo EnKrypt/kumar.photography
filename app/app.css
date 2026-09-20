@@ -80,6 +80,11 @@ a {
   visibility: hidden;
 }
 
+html.fl .overlay,
+html.fl .navbar {
+  opacity: 0;
+}
+
 .screen {
   position: absolute;
   inset: 0;

@@ -26,6 +26,8 @@ const configCss = `:root{
 
 const deepLinkScript = `if(location.hash.length>1){var d=document.documentElement;d.classList.add("dl");setTimeout(function(){d.classList.remove("dl")},3000)}`;
 
+const fontGateScript = `var f=document.documentElement;f.classList.add("fl");var r=function(){f.classList.remove("fl")};(document.fonts?document.fonts.ready:Promise.resolve()).then(r);setTimeout(r,2000)`;
+
 export function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang={site.lang} suppressHydrationWarning>
@@ -35,6 +37,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <meta name="theme-color" content="#12110f" />
         <style dangerouslySetInnerHTML={{ __html: configCss }} />
         <script dangerouslySetInnerHTML={{ __html: deepLinkScript }} />
+        <script dangerouslySetInnerHTML={{ __html: fontGateScript }} />
         <Meta />
         <Links />
       </head>

@@ -11,10 +11,8 @@ export type Engine = {
 };
 
 type Gesture = {
-  kind: 'touch' | 'wheel';
   startY: number;
   lastY: number;
-  offset: number;
   direction: number;
   scroller: HTMLElement | null;
 };
@@ -24,7 +22,6 @@ const easeOutCubic = (x: number) => 1 - (1 - x) ** 3;
 const easeInOutCubic = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - (-2 * x + 2) ** 3 / 2);
 
 const DEAD_ZONE = 0.02;
-const LINE_HEIGHT = 16;
 
 export function createScrollEngine(
   root: HTMLElement,
@@ -176,7 +173,10 @@ export function createScrollEngine(
   function scrollableAncestor(target: EventTarget | null): HTMLElement | null {
     let el = target instanceof Element ? target : null;
     while (el && el !== root) {
-      if (el instanceof HTMLElement && el.scrollHeight > el.clientHeight + 1) return el;
+      if (el instanceof HTMLElement && el.scrollHeight > el.clientHeight + 1) {
+        const overflow = getComputedStyle(el).overflowY;
+        if (overflow === 'auto' || overflow === 'scroll') return el;
+      }
       el = el.parentElement;
     }
     return null;
@@ -188,29 +188,19 @@ export function createScrollEngine(
     return false;
   }
 
-  function beginGesture(kind: Gesture['kind'], y: number, target: EventTarget | null) {
-    stopAnimation();
-    anchor = Math.round(position);
-    gesture = {
-      kind,
-      startY: y,
-      lastY: y,
-      offset: position - anchor,
-      direction: 0,
-      scroller: scrollableAncestor(target)
-    };
-  }
-
   const onTouchStart = (e: TouchEvent) => {
     if (e.touches.length !== 1) {
       gesture = null;
       return;
     }
-    beginGesture('touch', e.touches[0].clientY, e.target);
+    stopAnimation();
+    anchor = Math.round(position);
+    const y = e.touches[0].clientY;
+    gesture = { startY: y, lastY: y, direction: 0, scroller: scrollableAncestor(e.target) };
   };
 
   const onTouchMove = (e: TouchEvent) => {
-    if (!gesture || gesture.kind !== 'touch' || e.touches.length !== 1) return;
+    if (!gesture || e.touches.length !== 1) return;
     const y = e.touches[0].clientY;
     const moved = gesture.lastY - y;
     gesture.lastY = y;
@@ -223,7 +213,7 @@ export function createScrollEngine(
   };
 
   const onTouchEnd = () => {
-    if (!gesture || gesture.kind !== 'touch') return;
+    if (!gesture) return;
     const direction = gesture.direction || Math.sign(position - anchor);
     gesture = null;
     commit(direction);
@@ -234,18 +224,14 @@ export function createScrollEngine(
     const scroller = scrollableAncestor(e.target);
     if (scroller && canScrollFurther(scroller, direction)) return;
     e.preventDefault();
-    if (!gesture || gesture.kind !== 'wheel') beginGesture('wheel', 0, e.target);
-    const active = gesture as Gesture;
-    const unit = e.deltaMode === 1 ? LINE_HEIGHT : e.deltaMode === 2 ? height : 1;
-    active.offset += (e.deltaY * unit) / height;
-    if (direction) active.direction = direction;
-    setPosition(anchor + clamp(active.offset, -1, 1));
+    if (!direction) return;
+    const midGesture = wheelTimer !== undefined;
     clearTimeout(wheelTimer);
     wheelTimer = setTimeout(() => {
-      const pending = gesture?.direction ?? 0;
-      gesture = null;
-      commit(pending);
+      wheelTimer = undefined;
     }, snapDelayMs);
+    if (midGesture || animation) return;
+    animateTo(Math.round(position) + direction, 'jump');
   };
 
   const resize = new ResizeObserver(() => {
@@ -266,19 +252,16 @@ export function createScrollEngine(
   return {
     goTo(index) {
       gesture = null;
-      clearTimeout(wheelTimer);
       animateTo(index, 'jump');
     },
     step(delta) {
       gesture = null;
-      clearTimeout(wheelTimer);
       const base = animation ? animation.target : Math.round(position);
       animateTo(base + delta, 'jump');
     },
     jumpTo(index) {
       stopAnimation();
       gesture = null;
-      clearTimeout(wheelTimer);
       anchor = clamp(index, 0, count - 1);
       setPosition(anchor);
     },

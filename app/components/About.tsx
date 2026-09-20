@@ -26,7 +26,7 @@ function formatDate(iso: string) {
 }
 
 const TOTALS = [
-  { label: 'Species (life list)', value: totals.species },
+  { label: 'Species', value: totals.species },
   { label: 'Locations', value: totals.locations },
   { label: 'Total Photos', value: totals.photos }
 ];
