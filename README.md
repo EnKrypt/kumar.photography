@@ -64,6 +64,6 @@ not 16:9, a slug that does not exist, or an `.mdx` with no photo beside it.
 
 `build/client` is a plain static folder and can be directly uploaded or hosted on a provider.
 
-## Licence
+## License
 
 Code is MIT ([LICENSE](LICENSE)). The photographs are CC BY-NC-ND 4.0 ([LICENSE-PHOTOS.md](LICENSE-PHOTOS.md)) and are not tracked in this repo.

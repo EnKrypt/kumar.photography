@@ -12,7 +12,6 @@ function plainText(node: Node): string {
   return node.children.map(plainText).join(separator);
 }
 
-/** estree for `export const <name> = JSON.parse("<json>")`. */
 function jsonExport(name: string, value: unknown) {
   const json = JSON.stringify(value);
   return {

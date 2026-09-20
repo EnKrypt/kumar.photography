@@ -1,4 +1,4 @@
-# Photograph licence
+# Photograph license
 
 Copyright © 2026 Arvind Kumar.
 
@@ -15,14 +15,14 @@ generates from them — is licensed under
 You are free to **share** the photographs — copy and redistribute them in any medium or
 format — under these terms:
 
-- **Attribution.** Give appropriate credit to Arvind Kumar, link to this licence, and
+- **Attribution.** Give appropriate credit to Arvind Kumar, link to this license, and
   indicate if any changes were made.
 - **NonCommercial.** You may not use the photographs for commercial purposes.
 - **NoDerivatives.** If you remix, transform or build upon the photographs, you may not
   distribute the modified material.
 - **No additional restrictions.** You may not apply legal terms or technological measures
-  that legally restrict others from doing anything the licence permits.
+  that legally restrict others from doing anything the license permits.
 
-For any use beyond this licence, including commercial licensing, please ask first.
+For any use beyond this license, including commercial licensing, please ask first.
 
-The source code of this site is licensed separately under the MIT licence: see LICENSE.
+The source code of this site is licensed separately under the MIT license: see LICENSE.

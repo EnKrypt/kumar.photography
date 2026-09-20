@@ -1,6 +1,5 @@
 import { Link } from 'react-router';
 import { about, recentImages, totals } from '~/lib/content';
-import { PhotoLicense } from './PhotoLicense';
 import { Picture } from './Picture';
 
 const numberFormat = new Intl.NumberFormat('en-IN');
@@ -52,7 +51,6 @@ export function About({ load }: { load: boolean }) {
         </div>
         <figcaption className="about-caption">
           <Caption />
-          <PhotoLicense />
         </figcaption>
       </figure>
 

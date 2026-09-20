@@ -16,7 +16,6 @@ function parseValue(raw: string, where: string): Frontmatter[string] {
   if (text.startsWith('"')) {
     const match = DOUBLE_QUOTED.exec(text);
     if (!match) fail(where, `unterminated double-quoted value ${JSON.stringify(text)}`);
-    // The supported escapes are a subset of JSON's, so JSON parses the same string.
     try {
       return JSON.parse(`"${match[1]}"`) as string;
     } catch {
@@ -45,7 +44,6 @@ function parseValue(raw: string, where: string): Frontmatter[string] {
   return plain;
 }
 
-/** Parses the text between the `---` fences. `file` only appears in error messages. */
 export function parseFrontmatter(source: string, file = "frontmatter"): Frontmatter {
   const result: Frontmatter = {};
   source.split(/\r?\n/).forEach((line, index) => {

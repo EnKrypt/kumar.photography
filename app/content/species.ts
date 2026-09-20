@@ -6,5 +6,14 @@ export const species = {
   'oriental-darter': { name: 'Oriental Darter' },
   'purple-heron': { name: 'Purple Heron' },
   'white-throated-kingfisher': { name: 'White-throated Kingfisher' },
-  'pied-bushchat': { name: 'Pied Bushchat' }
+  'pied-bushchat': { name: 'Pied Bushchat' },
+  'asian-koel': { name: 'Asian Koel' },
+  'asian-tit': { name: 'Asian Tit' },
+  'black-kite': { name: 'Black Kite' },
+  'blue-faced-malkoha': { name: 'Blue-faced Malkoha' },
+  'common-iora': { name: 'Common Iora' },
+  'indian-paradise-flycatcher': { name: 'Indian Paradise-Flycatcher' },
+  'laughing-dove': { name: 'Laughing Dove' },
+  'pale-billed-flowerpecker': { name: 'Pale-billed Flowerpecker' },
+  'yellow-billed-babbler': { name: 'Yellow-billed Babbler' },
 } satisfies Record<string, { name: string }>;
