@@ -26,5 +26,20 @@ export const species = {
   'rose-ringed-parakeet': { name: 'Rose-ringed Parakeet' },
   'tickells-blue-flycatcher': { name: "Tickell's Blue Flycatcher" },
   'white-browed-wagtail': { name: 'White-browed Wagtail' },
-  'white-cheeked-barbet': { name: 'White-cheeked Barbet' }
+  'white-cheeked-barbet': { name: 'White-cheeked Barbet' },
+  'black-drongo': { name: 'Black Drongo' },
+  'brahminy-kite': { name: 'Brahminy Kite' },
+  'gray-heron': { name: 'Gray Heron' },
+  'great-cormorant': { name: 'Great Cormorant' },
+  'indian-spot-billed-duck': { name: 'Indian Spot-billed Duck' },
+  'indian-white-eye': { name: 'Indian White-eye' },
+  'jungle-myna': { name: 'Jungle Myna' },
+  'medium-egret': { name: 'Medium Egret' },
+  'purple-rumped-sunbird': { name: 'Purple-rumped Sunbird' },
+  'red-vented-bulbul': { name: 'Red-vented Bulbul' },
+  'red-whiskered-bulbul': { name: 'Red-whiskered Bulbul' },
+  'scaly-breasted-munia': { name: 'Scaly-breasted Munia' },
+  'spot-billed-pelican': { name: 'Spot-billed Pelican' },
+  'spotted-dove': { name: 'Spotted Dove' },
+  'white-breasted-waterhen': { name: 'White-breasted Waterhen' }
 } satisfies Record<string, { name: string }>;

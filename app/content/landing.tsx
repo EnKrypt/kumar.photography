@@ -9,16 +9,21 @@ export const landing: Landing = {
       </>
     ),
     subtitle: <>bird photography</>,
-    image: '2026-09-06-pied-bushchat',
+    image: '2026-09-06-pied-bushchat-1',
     overlay: 'right'
   },
   images: [
+    '2026-09-06-black-drongo-1',
+    '2026-09-06-brahminy-kite-6',
+    '2026-09-06-ashy-prinia',
+    '2026-09-06-red-vented-bulbul',
+    '2026-09-06-indian-pond-heron-2',
+    '2026-09-06-white-throated-kingfisher-1',
+    '2026-09-06-spot-billed-pelican-1',
     '2026-08-23-asian-green-bee-eater-2',
     '2026-08-23-rose-ringed-parakeet',
-    '2026-08-23-tickells-blue-flycatcher',
     '2026-08-16-pale-billed-flowerpecker-1',
     '2026-08-16-yellow-billed-babbler-1',
-    '2026-08-16-blue-faced-malkoha',
-    '2026-08-09-little-egret'
+    '2026-08-16-blue-faced-malkoha'
   ]
 };
