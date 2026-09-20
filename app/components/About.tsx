@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { about, recentImages, totals } from '~/lib/content';
+import { about, latestSightings, totals } from '~/lib/content';
 import { Picture } from './Picture';
 
 const numberFormat = new Intl.NumberFormat('en-IN');
@@ -31,11 +31,9 @@ const TOTALS = [
   { label: 'Total Photos', value: totals.photos }
 ];
 
-const RECENT_COUNT = 6;
-
 export function About({ load }: { load: boolean }) {
   const Caption = about.Caption;
-  const recent = recentImages(RECENT_COUNT);
+  const recent = latestSightings();
 
   return (
     <div className="about">

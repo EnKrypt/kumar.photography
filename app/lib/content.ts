@@ -119,17 +119,19 @@ landing.images.forEach((id) => getImage(id, "landing.tsx images"));
 const newestFirst = (a: ImageEntry, b: ImageEntry) =>
   (b.date ?? "").localeCompare(a.date ?? "") || a.id.localeCompare(b.id, "en", { numeric: true });
 
-export function recentImages(count: number): ImageEntry[] {
-  if (count <= 0) return [];
-  const newest: ImageEntry[] = [];
+export function latestSightings(): ImageEntry[] {
+  let latest: string | null = null;
   for (const image of images.values()) {
-    if (newest.length === count && newestFirst(image, newest[count - 1]) >= 0) continue;
-    let i = newest.length;
-    while (i > 0 && newestFirst(image, newest[i - 1]) < 0) i--;
-    newest.splice(i, 0, image);
-    if (newest.length > count) newest.pop();
+    if (image.date && (latest === null || image.date > latest)) latest = image.date;
   }
-  return newest;
+  if (!latest) return [];
+  const bySpecies = new Map<string, ImageEntry>();
+  for (const image of images.values()) {
+    if (image.date !== latest) continue;
+    const kept = bySpecies.get(image.species.slug);
+    if (!kept || newestFirst(image, kept) < 0) bySpecies.set(image.species.slug, image);
+  }
+  return [...bySpecies.values()].sort(newestFirst);
 }
 
 export function imagesForSpecies(slug: string): ImageEntry[] {
