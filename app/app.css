@@ -9,7 +9,7 @@
   --shadow-text: 0 1px 2px rgba(0, 0, 0, 0.45), 0 0 18px rgba(0, 0, 0, 0.35);
   --gutter: max(24px, 5vw);
   --nav-h: 60px;
-  --photo-max-crop: 0.24;
+  --photo-max-crop: 0.20;
   color-scheme: dark;
 }
 
