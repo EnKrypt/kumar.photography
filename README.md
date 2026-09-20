@@ -1,5 +1,7 @@
 # [<p align="center"><img src="https://raw.githubusercontent.com/EnKrypt/kumar.photography/main/app/content/preview.jpg" width="640" /></p>](https://arvind.io)
 
+## [kumar.photography](https://kumar.photography)
+
 My bird photography website. Go to https://arvind.io for my blog.
 
 This is a statically generated site. Created using React Router 8 and Vite 8.
