@@ -14,7 +14,6 @@ export function collectionMeta(collection: Collection, path: string, describe: (
     title: `${collection.name} — ${site.name}`,
     description: describe(collection.name),
     path,
-    image: collection.images[0],
   });
 }
 

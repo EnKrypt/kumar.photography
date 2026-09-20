@@ -22,7 +22,7 @@ const screens: ScreenDef[] = [
 ];
 
 export function meta() {
-  return pageMeta({ title: `${site.name}: Bird Photography`, path: "/", image: titleImage });
+  return pageMeta({ title: `${site.name}: Bird Photography`, path: "/" });
 }
 
 export default function Home() {

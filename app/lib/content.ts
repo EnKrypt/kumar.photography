@@ -16,7 +16,7 @@ const pictures = import.meta.glob<Picture>("../content/images/*.{jpg,jpeg,png,we
 });
 const metadata = import.meta.glob<MdxModule>("../content/images/*.mdx", { eager: true });
 
-const aboutPictures = import.meta.glob<Picture>("../content/*.{jpg,jpeg,png,webp,avif}", {
+const aboutPictures = import.meta.glob<Picture>(["../content/*.{jpg,jpeg,png,webp,avif}", "!../content/preview.jpg"], {
   eager: true,
   import: "default",
   query: "?w=320;480;640;960;1280&format=webp;jpg&allowUpscale=true&as=picture",

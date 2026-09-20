@@ -5,3 +5,8 @@ declare module "*.mdx" {
   const MDXContent: ComponentType<{ components?: Record<string, unknown> }>;
   export default MDXContent;
 }
+
+declare module "*&as=url" {
+  const src: string;
+  export default src;
+}

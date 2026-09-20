@@ -1,5 +1,6 @@
 # Photographs (CC BY-NC-ND 4.0, see LICENSE-PHOTOS.md) are excluded from the repo
 app/content/dp.jpg
+app/content/preview.jpg
 app/content/images/*.jpg
 app/content/images/*.jpeg
 app/content/images/*.png
