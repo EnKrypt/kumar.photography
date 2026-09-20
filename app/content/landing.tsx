@@ -16,6 +16,6 @@ export const landing: Landing = {
     "2026-08-09-little-egret",
     "2026-08-09-purple-heron",
     "2026-08-09-oriental-darter",
-    "2026-08-09-eurasian-coot-1"
+    "2026-08-09-indian-cormorant-1"
   ],
 };
