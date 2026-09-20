@@ -63,20 +63,14 @@ a {
 .gallery {
   position: fixed;
   inset: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   overscroll-behavior: none;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-.gallery::-webkit-scrollbar {
-  display: none;
+  touch-action: pinch-zoom;
 }
 
 .stage {
-  position: sticky;
-  top: 0;
-  height: 100%;
+  position: absolute;
+  inset: 0;
   overflow: hidden;
   container-type: size;
   background: var(--paper);
@@ -84,10 +78,6 @@ a {
 
 .dl .stage {
   visibility: hidden;
-}
-
-.spacer {
-  height: calc((var(--screens) - 1) * 100%);
 }
 
 .screen {
@@ -540,7 +530,8 @@ a {
   position: absolute;
   inset: 0;
   overflow-y: auto;
-  overscroll-behavior: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y pinch-zoom;
   display: grid;
   grid-template-columns: minmax(0, 1040px);
   justify-content: center;
