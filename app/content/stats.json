@@ -1,0 +1,41 @@
+{
+  "totals": { "lifeList": 53, "photographed": 48, "checklists": 5 },
+  "recentSightings": [
+    {
+      "species": "Gray Wagtail",
+      "location": "Saul Kere / Sowl Kere, Bengaluru",
+      "date": "2026-09-13",
+      "count": 1
+    },
+    {
+      "species": "Glossy Ibis",
+      "location": "Saul Kere / Sowl Kere, Bengaluru",
+      "date": "2026-09-13",
+      "count": 1
+    },
+    {
+      "species": "Purple Sunbird",
+      "location": "Saul Kere / Sowl Kere, Bengaluru",
+      "date": "2026-09-13",
+      "count": 1
+    },
+    {
+      "species": "Purple-rumped Sunbird",
+      "location": "Saul Kere / Sowl Kere, Bengaluru",
+      "date": "2026-09-13",
+      "count": 6
+    },
+    {
+      "species": "Pied Bushchat",
+      "location": "Saul Kere / Sowl Kere, Bengaluru",
+      "date": "2026-09-13",
+      "count": 1
+    },
+    {
+      "species": "Painted Stork",
+      "location": "Saul Kere / Sowl Kere, Bengaluru",
+      "date": "2026-09-13",
+      "count": 2
+    }
+  ]
+}
