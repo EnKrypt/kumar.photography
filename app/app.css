@@ -9,6 +9,7 @@
   --shadow-text: 0 1px 2px rgba(0, 0, 0, 0.45), 0 0 18px rgba(0, 0, 0, 0.35);
   --gutter: max(24px, 5vw);
   --nav-h: 60px;
+  --photo-max-crop: 0.24;
   color-scheme: dark;
 }
 
@@ -69,6 +70,10 @@ a {
 }
 
 .stage {
+  --photo-width: min(100cqw, calc(16 / 9 * (100cqh - var(--nav-h)) / (1 - var(--photo-max-crop))));
+  --photo-height: min(56.25cqw, calc(100cqh - var(--nav-h)));
+  --photo-bar: calc((100cqw - var(--photo-width)) / 2);
+  --photo-crop-top: max(0px, calc((9 / 16 * var(--photo-width) - var(--photo-height) - var(--nav-h)) / 2));
   position: absolute;
   inset: 0;
   overflow: hidden;
@@ -107,19 +112,20 @@ html.fl .navbar {
 
 .photo {
   position: absolute;
-  inset: 0;
+  inset: var(--nav-h) 0 0;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .photo picture {
   display: contents;
 }
 .photo img {
   display: block;
-  width: 100%;
-  height: min(56.25cqw, 100cqh);
+  width: var(--photo-width);
+  height: var(--photo-height);
   object-fit: cover;
-  object-position: center;
+  object-position: center calc(-1 * var(--photo-crop-top));
 }
 
 .overlay,
@@ -156,17 +162,17 @@ html.fl .navbar {
 
 .overlay {
   position: absolute;
-  top: 50%;
+  top: calc(50% + var(--nav-h) / 2);
   translate: 0 -50%;
-  max-width: min(30em, 42cqw);
+  max-width: min(30em, calc(0.42 * var(--photo-width)));
   color: var(--ink);
   text-shadow: var(--shadow-text);
 }
 .overlay--left {
-  left: var(--gutter);
+  left: calc(var(--gutter) + var(--photo-bar));
 }
 .overlay--right {
-  right: var(--gutter);
+  right: calc(var(--gutter) + var(--photo-bar));
   text-align: right;
 }
 
@@ -175,11 +181,11 @@ html.fl .navbar {
 }
 .title-block {
   margin: 0;
-  max-width: 60cqw;
+  max-width: calc(0.6 * var(--photo-width));
 }
 .title {
   margin: 0;
-  font-size: min(var(--title-size), 11.5cqw);
+  font-size: min(var(--title-size), calc(0.115 * var(--photo-width)));
   font-weight: var(--weight-normal);
   line-height: 0.9;
   letter-spacing: -0.01em;
@@ -193,7 +199,7 @@ html.fl .navbar {
 }
 .subtitle {
   margin: 0.5em 0 0 0.1em;
-  font-size: min(var(--subtitle-size), 4cqw);
+  font-size: min(var(--subtitle-size), calc(0.04 * var(--photo-width)));
   color: var(--bone);
   letter-spacing: 0.06em;
 }
@@ -265,7 +271,7 @@ html.fl .navbar {
 
 @container (max-aspect-ratio: 4 / 5) {
   .overlay:not(:has(.title)) {
-    top: calc(50% + 28.125cqw + 20px);
+    top: calc(50% + var(--nav-h) / 2 + 28.125cqw + 20px);
     translate: none;
     max-width: calc(100cqw - 2 * var(--gutter));
   }
@@ -279,23 +285,14 @@ html.fl .navbar {
   inset: 0 0 auto;
   z-index: 10000;
   height: var(--nav-h);
-  padding: env(safe-area-inset-top) var(--gutter) 0;
+  padding: env(safe-area-inset-top) calc(var(--gutter) + var(--photo-bar)) 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  background: transparent;
+  background: var(--paper);
+  box-shadow: 0 5px 12px color-mix(in srgb, var(--paper) 75%, transparent);
   color: var(--ink);
-  text-shadow: var(--shadow-text);
-}
-
-.navbar::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 -48px;
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.2) 50%, transparent);
 }
 
 .navbar-end,
