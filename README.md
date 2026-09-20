@@ -1,4 +1,4 @@
-# kumar.photography
+# [<p align="center"><img src="https://raw.githubusercontent.com/EnKrypt/kumar.photography/main/app/content/preview.jpg" width="640" /></p>](https://arvind.io)
 
 My bird photography website. Go to https://arvind.io for my blog.
 
@@ -13,7 +13,8 @@ If you want to generate a build for this website for whatever reason, you'll nee
 3. Match `app/content/images/*.mdx` to match the same file names as the images with appropriate content.
 4. Edit the contents of `app/content/species.ts` and `app/content/locations.ts` with information pertaining to your images.
 5. Add `app/content/dp.jpg` with your display picture.
-6. Finally modify `app/content/landing.tsx` and `app/content/about.mdx` with accurate information for your use case, and to avoid impersonating me.
+6. Replace `app/content/preview.jpg` with your website's banner.
+7. Finally modify `app/content/landing.tsx` and `app/content/about.mdx` with accurate information for your use case, and to avoid impersonating me.
 
 If you don't populate the images, or leave any broken references to file names, species or location slugs, the build will fail.
 
