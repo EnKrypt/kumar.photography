@@ -44,7 +44,7 @@ export function About({ load }: { load: boolean }) {
             variants={about.variants}
             alt={about.alt}
             load={load}
-            sizes="(max-width: 560px) 60vw, 240px"
+            sizes="(max-width: 560px) 60vw, 300px"
           />
         </div>
         <figcaption className="about-caption">
