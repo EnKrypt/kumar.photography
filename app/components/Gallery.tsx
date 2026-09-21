@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
+import { ChevronDownIcon } from './icons';
 import { Navbar } from './Navbar';
 import { createScrollEngine, type Engine, type EngineState } from './scroll-engine';
 import { Screen, type LayerElements } from './Screen';
@@ -32,6 +33,14 @@ export function Gallery({ screens, heading }: Props) {
   const [view, setView] = useState<EngineState>({ index: 0, caption: 0, atTop: true });
   const [loaded, setLoaded] = useState<ReadonlySet<number>>(() => new Set([0]));
   const [started, setStarted] = useState(false);
+  const [hintAt, setHintAt] = useState<number | null>(null);
+  const hintArmed = useRef(false);
+
+  useEffect(() => {
+    if (hintAt === null || hintAt < 0) return;
+    if (view.index === hintAt) hintArmed.current = true;
+    else if (hintArmed.current) setHintAt(-1);
+  }, [view.index, hintAt]);
 
   useEffect(() => {
     if (started) setLoaded((prev) => withNeighbours(prev, view.index, n));
@@ -101,12 +110,14 @@ export function Gallery({ screens, heading }: Props) {
     if (index >= 0) engine.current?.jumpTo(index);
     document.documentElement.classList.remove('dl');
     setStarted(true);
+    setHintAt((prev) => prev ?? Math.max(index, 0));
   }, [hash, screens]);
 
   const aboutIndex = screens.findIndex((s) => s.kind === 'about');
   const first = screens[0];
   const hasTitleScreen = first?.kind === 'image' && first.title != null;
   const titleOnScreen = hasTitleScreen && view.caption === 0;
+  const showHint = hintAt === view.index && hintAt < n - 1;
 
   return (
     <div className="gallery" ref={rootRef}>
@@ -130,6 +141,16 @@ export function Gallery({ screens, heading }: Props) {
           showTop={!view.atTop}
           onTop={() => engine.current?.goTo(0)}
         />
+        <button
+          type="button"
+          className="scroll-hint"
+          onClick={() => engine.current?.step(1)}
+          data-visible={showHint || undefined}
+          aria-label="Next photo"
+          {...(showHint ? {} : { tabIndex: -1, 'aria-hidden': true as const })}
+        >
+          <ChevronDownIcon />
+        </button>
       </div>
     </div>
   );

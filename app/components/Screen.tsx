@@ -42,7 +42,6 @@ export const Screen = memo(function Screen({ def, index, load, priority, overlay
       <div className="photo" ref={photoRef}>
         <Picture variants={image.variants} alt={image.alt} load={load} priority={priority} />
       </div>
-      <div className={`scrim scrim--${side}${title ? " scrim--title" : ""}`} data-visible={overlayVisible || undefined} aria-hidden="true" />
       <div className={`overlay overlay--${side}`} data-visible={overlayVisible || undefined}>
         {title ? (
           <hgroup className="title-block">

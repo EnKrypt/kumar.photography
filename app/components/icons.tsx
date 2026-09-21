@@ -41,6 +41,14 @@ export function ArrowUpIcon() {
   );
 }
 
+export function ChevronDownIcon() {
+  return (
+    <svg {...common}>
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
 export function CloseIcon() {
   return (
     <svg {...common}>
