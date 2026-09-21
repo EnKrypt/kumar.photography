@@ -8,7 +8,9 @@ import type { Route } from "./+types/location";
 function find(slug: string) {
   const entry = locations[slug as keyof typeof locations];
   const images = entry ? imagesForLocation(slug) : [];
-  return images.length ? { name: entry.name, images } : null;
+  return images.length
+    ? { name: entry.name, images, link: { href: `https://ebird.org/hotspot/${entry.ebird}`, label: "About this location" } }
+    : null;
 }
 
 export function meta({ params }: Route.MetaArgs) {

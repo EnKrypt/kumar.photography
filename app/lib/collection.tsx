@@ -6,7 +6,7 @@ import { site } from "~/content/site";
 import { pageMeta } from "./seo";
 import type { ImageEntry } from "./types";
 
-type Collection = { name: string; images: ImageEntry[] } | null;
+type Collection = { name: string; images: ImageEntry[]; link: { href: string; label: string } } | null;
 
 export function collectionMeta(collection: Collection, path: string, describe: (name: string) => string) {
   if (!collection) return [{ title: `Not found — ${site.name}` }, { name: "robots", content: "noindex" }];
@@ -20,5 +20,5 @@ export function collectionMeta(collection: Collection, path: string, describe: (
 export function CollectionPage({ collection }: { collection: Collection }) {
   const screens = useMemo(() => collection?.images.map(imageScreen) ?? [], [collection]);
   if (!collection || screens.length === 0) return <NotFound />;
-  return <Gallery screens={screens} heading={collection.name} />;
+  return <Gallery screens={screens} collection={{ name: collection.name, link: collection.link }} />;
 }

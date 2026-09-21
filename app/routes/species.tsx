@@ -8,7 +8,9 @@ import type { Route } from "./+types/species";
 function find(slug: string) {
   const entry = species[slug as keyof typeof species];
   const images = entry ? imagesForSpecies(slug) : [];
-  return images.length ? { name: entry.name, images } : null;
+  return images.length
+    ? { name: entry.name, images, link: { href: `https://ebird.org/species/${entry.ebird}`, label: "About this bird" } }
+    : null;
 }
 
 export function meta({ params }: Route.MetaArgs) {

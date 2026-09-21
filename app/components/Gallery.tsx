@@ -8,7 +8,7 @@ import type { ScreenDef } from './screens';
 
 type Props = {
   screens: ScreenDef[];
-  heading?: string;
+  collection?: { name: string; link: { href: string; label: string } };
 };
 
 function withNeighbours(prev: ReadonlySet<number>, index: number, n: number): ReadonlySet<number> {
@@ -23,7 +23,7 @@ function findScreen(screens: ScreenDef[], id: string): number {
   return screens.findIndex((s) => s.kind === 'image' && s.image.id === id);
 }
 
-export function Gallery({ screens, heading }: Props) {
+export function Gallery({ screens, collection }: Props) {
   const n = screens.length;
   const rootRef = useRef<HTMLDivElement>(null);
   const layers = useRef<(LayerElements | null)[]>([]);
@@ -122,7 +122,6 @@ export function Gallery({ screens, heading }: Props) {
   return (
     <div className="gallery" ref={rootRef}>
       <div className="stage">
-        {heading && <h1 className="visually-hidden">{heading}</h1>}
         {screens.map((def, i) => (
           <Screen
             key={def.key}
@@ -140,6 +139,7 @@ export function Gallery({ screens, heading }: Props) {
           showTitle={!titleOnScreen}
           showTop={!view.atTop}
           onTop={() => engine.current?.goTo(0)}
+          collection={collection && { ...collection, count: n }}
         />
         <button
           type="button"
