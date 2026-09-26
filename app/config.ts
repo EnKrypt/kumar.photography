@@ -16,7 +16,7 @@ export const config = {
 
   font: {
     googleSlug: 'Cormorant',
-    weights: { normal: 400, bold: 700 },
+    weights: { normal: 500, bold: 700 },
     sizePx: { title: 144, caption: 22, subtitle: 50 }
   }
 } as const;

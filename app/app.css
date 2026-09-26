@@ -3,8 +3,7 @@
   --ink-muted: rgba(244, 241, 234, 0.72);
   --paper: #06201d;
   --rule: rgba(244, 241, 234, 0.16);
-  --bone: #ede5d3;
-  --gold: #d4a24c;
+  --gold: #f4c24c;
   --heading-size: 48px;
   --shadow-text: 0 1px 2px rgba(0, 0, 0, 0.45), 0 0 18px rgba(0, 0, 0, 0.35);
   --gutter: max(24px, 5vw);
@@ -169,7 +168,7 @@ html.fl .navbar {
   white-space: nowrap;
 }
 .title-first {
-  color: var(--bone);
+  color: var(--ink);
 }
 .title-last {
   color: var(--gold);
@@ -177,7 +176,7 @@ html.fl .navbar {
 .subtitle {
   margin: 0.5em 0 0 0.1em;
   font-size: min(var(--subtitle-size), calc(0.04 * var(--photo-width)));
-  color: var(--bone);
+  color: var(--ink);
   letter-spacing: 0.06em;
 }
 
@@ -682,7 +681,7 @@ html.fl .navbar {
 }
 .about-caption {
   margin: 0;
-  color: var(--ink-muted);
+  color: var(--ink);
 }
 .about-caption p {
   margin: 0;
@@ -711,7 +710,7 @@ html.fl .navbar {
   flex-direction: column-reverse;
 }
 .about-total dt {
-  color: var(--ink-muted);
+  color: var(--ink);
   font-size: 0.85em;
 }
 .about-total dd {
@@ -750,7 +749,7 @@ html.fl .navbar {
 }
 .sighting-location,
 .sighting-date {
-  color: var(--ink-muted);
+  color: var(--ink);
 }
 .sighting-date {
   font-variant-numeric: lining-nums tabular-nums;
@@ -828,7 +827,7 @@ html.fl .navbar {
   text-align: center;
   padding: var(--gutter);
   background: var(--paper);
-  color: var(--bone);
+  color: var(--ink);
 }
 .message-title {
   margin: 0 0 clamp(16px, 4vh, 32px);

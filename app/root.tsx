@@ -1,17 +1,27 @@
-import type { ReactNode } from "react";
-import { isRouteErrorResponse, Links, Meta, Outlet, Scripts } from "react-router";
-import type { Route } from "./+types/root";
-import { config, fontFamily, googleFontsHref } from "./config";
-import { site } from "./content/site";
-import { NotFound } from "./components/NotFound";
-import "./app.css";
+import type { ReactNode } from 'react';
+import {
+  isRouteErrorResponse,
+  Links,
+  Meta,
+  Outlet,
+  Scripts
+} from 'react-router';
+import type { Route } from './+types/root';
+import { config, fontFamily, googleFontsHref } from './config';
+import { site } from './content/site';
+import { NotFound } from './components/NotFound';
+import './app.css';
 
 export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-  { rel: "stylesheet", href: googleFontsHref },
-  { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-  { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+  {
+    rel: 'preconnect',
+    href: 'https://fonts.gstatic.com',
+    crossOrigin: 'anonymous'
+  },
+  { rel: 'stylesheet', href: googleFontsHref },
+  { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+  { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }
 ];
 
 const configCss = `:root{
@@ -33,11 +43,19 @@ export function Layout({ children }: { children: ReactNode }) {
     <html lang={site.lang} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
         <meta name="theme-color" content="#12110f" />
         <style dangerouslySetInnerHTML={{ __html: configCss }} />
         <script dangerouslySetInnerHTML={{ __html: deepLinkScript }} />
         <script dangerouslySetInnerHTML={{ __html: fontGateScript }} />
+        <script
+          src={site.umami.umamiScriptUrl}
+          data-website-id={site.umami.umamiSiteId}
+          defer
+        ></script>
         <Meta />
         <Links />
       </head>
@@ -55,7 +73,7 @@ export default function App() {
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   if (isRouteErrorResponse(error) && error.status === 404) return <NotFound />;
-  const message = error instanceof Error ? error.message : "Unknown error";
+  const message = error instanceof Error ? error.message : 'Unknown error';
   return (
     <main className="message-page">
       <h1>Something went wrong</h1>
