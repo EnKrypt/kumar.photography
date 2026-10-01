@@ -14,12 +14,14 @@ export const landing: Landing = {
   },
   images: [
     '2026-09-13-white-cheeked-barbet-2',
+    '2026-09-27-scaly-breasted-munia-4',
     '2026-09-06-black-drongo-1',
     '2026-09-13-purple-rumped-sunbird-2',
     '2026-09-06-spotted-dove-1',
     '2026-09-13-glossy-ibis',
     '2026-09-13-purple-sunbird-1',
     '2026-09-13-painted-stork-2',
+    '2026-09-27-oriental-magpie-robin-1',
     '2026-09-13-pied-bushchat-2',
     '2026-09-13-common-myna',
     '2026-09-13-gray-wagtail',
@@ -31,6 +33,7 @@ export const landing: Landing = {
     '2026-09-06-spot-billed-pelican-1',
     '2026-08-23-asian-green-bee-eater-2',
     '2026-08-23-rose-ringed-parakeet',
+    '2026-09-27-medium-egret-2',
     '2026-08-16-pale-billed-flowerpecker-1',
     '2026-08-16-yellow-billed-babbler-1',
     '2026-08-16-blue-faced-malkoha'
