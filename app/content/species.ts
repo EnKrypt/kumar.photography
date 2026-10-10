@@ -52,5 +52,10 @@ export const species = {
   'little-cormorant': { name: 'Little Cormorant', ebird: 'litcor1' },
   'oriental-magpie-robin': { name: 'Oriental Magpie-Robin', ebird: 'magrob' },
   'red-wattled-lapwing': { name: 'Red-wattled Lapwing', ebird: 'rewlap1' },
-  'shikra': { name: 'Shikra', ebird: 'shikra1' }
+  'shikra': { name: 'Shikra', ebird: 'shikra1' },
+  'brown-shrike': { name: 'Brown Shrike', ebird: 'brnshr' },
+  'gray-headed-swamphen': { name: 'Gray-headed Swamphen', ebird: 'purswa3' },
+  'pied-kingfisher': { name: 'Pied Kingfisher', ebird: 'piekin1' },
+  'whiskered-tern': { name: 'Whiskered Tern', ebird: 'whiter2' },
+  'wire-tailed-swallow': { name: 'Wire-tailed Swallow', ebird: 'witswa1' }
 } satisfies Record<string, { name: string; ebird: string }>;
