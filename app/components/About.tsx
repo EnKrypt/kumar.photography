@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { about, latestSightings, totals } from '~/lib/content';
+import { RssIcon } from './icons';
 import { Picture } from './Picture';
 
 const numberFormat = new Intl.NumberFormat('en-IN');
@@ -62,7 +63,18 @@ export function About({ load }: { load: boolean }) {
           ))}
         </dl>
 
-        <h3 className="about-subheading">Recent sightings</h3>
+        <div className="about-sightings-head">
+          <h3 className="about-subheading">Recent sightings</h3>
+          <a
+            className="about-feed"
+            href="/feed.xml"
+            type="application/rss+xml"
+            title="RSS Feed"
+          >
+            <RssIcon />
+            Follow by RSS
+          </a>
+        </div>
         <ol className="about-sightings">
           {recent.map((image) => (
             <li key={image.id}>

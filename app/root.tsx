@@ -21,7 +21,13 @@ export const links: Route.LinksFunction = () => [
   },
   { rel: 'stylesheet', href: googleFontsHref },
   { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
-  { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }
+  { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+  {
+    rel: 'alternate',
+    type: 'application/rss+xml',
+    title: `${site.name}: Bird Photography`,
+    href: '/feed.xml'
+  }
 ];
 
 const configCss = `:root{

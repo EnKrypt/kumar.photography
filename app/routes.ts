@@ -6,5 +6,7 @@ export default [
   route("locations/:slug", "routes/location.tsx"),
   route("sitemap.xml", "routes/sitemap.ts"),
   route("robots.txt", "routes/robots.ts"),
+  route("feed.xml", "routes/feed.ts"),
+  route("feed/:page.xml", "routes/feed-page.ts"),
   route("*", "routes/not-found.tsx"),
 ] satisfies RouteConfig;

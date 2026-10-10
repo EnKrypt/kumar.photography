@@ -18,6 +18,11 @@ export const config = {
     googleSlug: 'Cormorant',
     weights: { normal: 500, bold: 700 },
     sizePx: { title: 144, caption: 22, subtitle: 50 }
+  },
+
+  feed: {
+    perPage: 5,
+    imageWidth: 960
   }
 } as const;
 

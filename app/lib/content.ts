@@ -4,7 +4,7 @@ import { landing } from "~/content/landing";
 import { locations } from "~/content/locations";
 import { site } from "~/content/site";
 import { species } from "~/content/species";
-import type { ImageEntry, ImageVariants, LocationSlug, OverlaySide, SpeciesSlug } from "./types";
+import type { ImageEntry, ImageVariants, LocationSlug, Outing, OverlaySide, SpeciesSlug } from "./types";
 
 type Picture = { sources: Record<string, string>; img: { src: string; w: number; h: number } };
 type MdxModule = { default: ComponentType; frontmatter?: Record<string, unknown>; text?: string };
@@ -132,6 +132,31 @@ export function latestSightings(): ImageEntry[] {
     if (!kept || newestFirst(image, kept) < 0) bySpecies.set(image.species.slug, image);
   }
   return [...bySpecies.values()].sort(newestFirst);
+}
+
+export function outings(): Outing[] {
+  const byDate = new Map<string, ImageEntry[]>();
+  for (const image of images.values()) {
+    if (!image.date) continue;
+    const sameDay = byDate.get(image.date);
+    if (sameDay) sameDay.push(image);
+    else byDate.set(image.date, [image]);
+  }
+
+  return [...byDate.entries()]
+    .sort(([a], [b]) => b.localeCompare(a))
+    .map(([date, sameDay]) => {
+      sameDay.sort(newestFirst);
+      const { location } = sameDay[0];
+      const elsewhere = sameDay.find((i) => i.location.slug !== location.slug);
+      if (elsewhere)
+        fail(
+          `${elsewhere.id}.mdx`,
+          `${date} already has photos from "${location.slug}"; one date must be one location, since the feed publishes a date as a single outing`,
+        );
+      const speciesNames = [...new Set(sameDay.map((i) => i.species.name))].sort((a, b) => a.localeCompare(b));
+      return { date, location, images: sameDay, speciesNames };
+    });
 }
 
 export function imagesForSpecies(slug: string): ImageEntry[] {

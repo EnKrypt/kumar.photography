@@ -724,6 +724,30 @@ html.fl .navbar {
   font-size: 1em;
   font-weight: var(--weight-bold);
 }
+.about-sightings-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+.about-feed {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  flex: none;
+  color: var(--ink-muted);
+  font-size: 0.85em;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.about-feed:hover {
+  color: var(--ink);
+}
+.about-feed svg {
+  width: 0.95em;
+  height: 0.95em;
+}
 .about-sightings {
   margin: 0;
   padding: 0;

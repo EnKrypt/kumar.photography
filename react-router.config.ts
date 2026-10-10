@@ -1,6 +1,7 @@
 import type { Config } from "@react-router/dev/config";
 import { copyFileSync, existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
+import { config } from "./app/config.ts";
 import { parseFrontmatter } from "./app/frontmatter/parse-frontmatter.ts";
 
 function contentPaths(): string[] {
@@ -19,9 +20,19 @@ function contentPaths(): string[] {
   ];
 }
 
+function feedPaths(): string[] {
+  const dates = new Set<string>();
+  for (const file of readdirSync("app/content/images")) {
+    const date = /^(\d{4}-\d{2}-\d{2}).*\.mdx$/.exec(file)?.[1];
+    if (date) dates.add(date);
+  }
+  const pages = Math.max(1, Math.ceil(dates.size / config.feed.perPage));
+  return Array.from({ length: pages }, (_, i) => (i === 0 ? "/feed.xml" : `/feed/${i + 1}.xml`));
+}
+
 export default {
   ssr: false,
-  prerender: () => ["/", "/sitemap.xml", "/robots.txt", ...contentPaths()],
+  prerender: () => ["/", "/sitemap.xml", "/robots.txt", ...feedPaths(), ...contentPaths()],
   buildEnd({ reactRouterConfig }) {
     const client = path.join(reactRouterConfig.buildDirectory, "client");
     const fallback = path.join(client, "__spa-fallback.html");

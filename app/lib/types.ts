@@ -25,6 +25,13 @@ export type ImageEntry = {
   variants: ImageVariants;
 };
 
+export type Outing = {
+  date: string;
+  location: { slug: LocationSlug; name: string };
+  images: ImageEntry[];
+  speciesNames: string[];
+};
+
 export type Landing = {
   title: { node: ReactNode; subtitle?: ReactNode; image: string; overlay: OverlaySide };
   images: string[];
