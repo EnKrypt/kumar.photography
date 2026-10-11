@@ -14,8 +14,9 @@ export const landing: Landing = {
   },
   images: [
     '2026-09-13-white-cheeked-barbet-2',
-    '2026-09-27-scaly-breasted-munia-4',
+    '2026-10-11-black-kite-2',
     '2026-09-06-black-drongo-1',
+    '2026-09-27-scaly-breasted-munia-4',
     '2026-09-13-purple-rumped-sunbird-2',
     '2026-09-06-spotted-dove-1',
     '2026-09-13-purple-sunbird-1',
@@ -37,6 +38,6 @@ export const landing: Landing = {
     '2026-09-27-medium-egret-2',
     '2026-08-16-pale-billed-flowerpecker-1',
     '2026-08-16-yellow-billed-babbler-1',
-    '2026-08-16-blue-faced-malkoha'
+    '2026-10-11-blue-faced-malkoha'
   ]
 };

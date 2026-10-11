@@ -57,5 +57,6 @@ export const species = {
   'gray-headed-swamphen': { name: 'Gray-headed Swamphen', ebird: 'purswa3' },
   'pied-kingfisher': { name: 'Pied Kingfisher', ebird: 'piekin1' },
   'whiskered-tern': { name: 'Whiskered Tern', ebird: 'whiter2' },
-  'wire-tailed-swallow': { name: 'Wire-tailed Swallow', ebird: 'witswa1' }
+  'wire-tailed-swallow': { name: 'Wire-tailed Swallow', ebird: 'witswa1' },
+  'western-marsh-harrier': { name: 'Western Marsh Harrier', ebird: 'wemhar1' }
 } satisfies Record<string, { name: string; ebird: string }>;
