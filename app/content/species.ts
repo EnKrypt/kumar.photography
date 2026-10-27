@@ -58,5 +58,10 @@ export const species = {
   'pied-kingfisher': { name: 'Pied Kingfisher', ebird: 'piekin1' },
   'whiskered-tern': { name: 'Whiskered Tern', ebird: 'whiter2' },
   'wire-tailed-swallow': { name: 'Wire-tailed Swallow', ebird: 'witswa1' },
-  'western-marsh-harrier': { name: 'Western Marsh Harrier', ebird: 'wemhar1' }
+  'western-marsh-harrier': { name: 'Western Marsh Harrier', ebird: 'wemhar1' },
+  'indian-silverbill': { name: 'Indian Silverbill', ebird: 'indsil' },
+  'puff-throated-babbler': { name: 'Puff-throated Babbler', ebird: 'putbab1' },
+  'small-minivet': { name: 'Small Minivet', ebird: 'smamin1' },
+  'sykes-warbler': { name: "Sykes's Warbler", ebird: 'sykwar2' },
+  'yellow-eyed-babbler': { name: 'Yellow-eyed Babbler', ebird: 'yeebab1' }
 } satisfies Record<string, { name: string; ebird: string }>;
