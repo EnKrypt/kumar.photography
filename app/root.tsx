@@ -40,6 +40,12 @@ const configCss = `:root{
 --fade-ms:${config.captionFadeMs}ms;
 }`;
 
+const bootCss = `.screen{visibility:hidden}
+.dl .stage{visibility:hidden;opacity:0}
+.overlay,.navbar-title,.nav-top,.scroll-hint{opacity:0;visibility:hidden}
+.overlay[data-visible],.navbar-title[data-visible],.nav-top[data-visible],.scroll-hint[data-visible]{opacity:1;visibility:visible}
+html.fl .overlay,html.fl .navbar{opacity:0}`;
+
 const deepLinkScript = `if(location.hash.length>1){var d=document.documentElement;d.classList.add("dl");setTimeout(function(){d.classList.remove("dl")},3000)}`;
 
 const fontGateScript = `var f=document.documentElement;f.classList.add("fl");var r=function(){f.classList.remove("fl")};(document.fonts?document.fonts.ready:Promise.resolve()).then(r);setTimeout(r,2000)`;
@@ -54,7 +60,7 @@ export function Layout({ children }: { children: ReactNode }) {
           content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
         <meta name="theme-color" content="#12110f" />
-        <style dangerouslySetInnerHTML={{ __html: configCss }} />
+        <style dangerouslySetInnerHTML={{ __html: configCss + bootCss }} />
         <script dangerouslySetInnerHTML={{ __html: deepLinkScript }} />
         <script dangerouslySetInnerHTML={{ __html: fontGateScript }} />
         <script

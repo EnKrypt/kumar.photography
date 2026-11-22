@@ -77,6 +77,7 @@ a {
 
 .dl .stage {
   visibility: hidden;
+  opacity: 0;
 }
 
 html.fl .overlay,
