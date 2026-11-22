@@ -15,10 +15,12 @@ export const landing: Landing = {
   images: [
     '2026-09-13-white-cheeked-barbet-2',
     '2026-10-11-black-kite-2',
+    '2026-10-31-brown-eared-bulbul-9',
     '2026-09-06-black-drongo-1',
     '2026-09-27-scaly-breasted-munia-4',
     '2026-09-13-purple-rumped-sunbird-2',
     '2026-09-06-spotted-dove-1',
+    '2026-10-31-eastern-spot-billed-duck-3',
     '2026-09-13-purple-sunbird-1',
     '2026-09-13-glossy-ibis',
     '2026-10-04-indian-spot-billed-duck-1',

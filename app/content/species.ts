@@ -63,5 +63,13 @@ export const species = {
   'puff-throated-babbler': { name: 'Puff-throated Babbler', ebird: 'putbab1' },
   'small-minivet': { name: 'Small Minivet', ebird: 'smamin1' },
   'sykes-warbler': { name: "Sykes's Warbler", ebird: 'sykwar2' },
-  'yellow-eyed-babbler': { name: 'Yellow-eyed Babbler', ebird: 'yeebab1' }
+  'yellow-eyed-babbler': { name: 'Yellow-eyed Babbler', ebird: 'yeebab1' },
+  'azure-winged-magpie': { name: 'Azure-winged Magpie', ebird: 'azwmag2' },
+  'black-tailed-gull': { name: 'Black-tailed Gull', ebird: 'bktgul' },
+  'brown-eared-bulbul': { name: 'Brown-eared Bulbul', ebird: 'brebul1' },
+  'eastern-spot-billed-duck': { name: 'Eastern Spot-billed Duck', ebird: 'spbduc' },
+  'eurasian-coot': { name: 'Eurasian Coot', ebird: 'eurcoo' },
+  'green-winged-teal': { name: 'Green-winged Teal', ebird: 'gnwtea' },
+  'oriental-turtle-dove': { name: 'Oriental Turtle-Dove', ebird: 'ortdov' },
+  'white-cheeked-starling': { name: 'White-cheeked Starling', ebird: 'whcsta1' }
 } satisfies Record<string, { name: string; ebird: string }>;
