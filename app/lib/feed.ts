@@ -81,7 +81,7 @@ function itemXml(outing: Outing): string {
     "  <item>",
     `    <title>${escapeXml(`${formatDate(outing.date)} · ${outing.location.name}`)}</title>`,
     `    <link>${escapeXml(link)}</link>`,
-    `    <guid isPermaLink="false">${host}:outing:${outing.date}</guid>`,
+    `    <guid isPermaLink="false">${host}:outing:${outing.date}:${outing.location.slug}</guid>`,
     `    <pubDate>${asRfc822(outing.date)}</pubDate>`,
     ...categories,
     `    <media:content url="${escapeXml(image)}" medium="image" type="image/jpeg" width="${imageWidth}" height="${height}" />`,

@@ -125,38 +125,39 @@ export function latestSightings(): ImageEntry[] {
     if (image.date && (latest === null || image.date > latest)) latest = image.date;
   }
   if (!latest) return [];
-  const bySpecies = new Map<string, ImageEntry>();
+  const bySighting = new Map<string, ImageEntry>();
   for (const image of images.values()) {
     if (image.date !== latest) continue;
-    const kept = bySpecies.get(image.species.slug);
-    if (!kept || newestFirst(image, kept) < 0) bySpecies.set(image.species.slug, image);
+    const key = `${image.species.slug} ${image.location.slug}`;
+    const kept = bySighting.get(key);
+    if (!kept || newestFirst(image, kept) < 0) bySighting.set(key, image);
   }
-  return [...bySpecies.values()].sort(newestFirst);
+  return [...bySighting.values()].sort(newestFirst);
 }
 
+/**
+ * An outing is one date at one location, so a day spent at two places publishes as
+ * two feed entries. react-router.config.ts groups by the same key to count how many
+ * feed pages to prerender; keep the two in step.
+ */
 export function outings(): Outing[] {
-  const byDate = new Map<string, ImageEntry[]>();
+  const byOuting = new Map<string, { date: string; images: ImageEntry[] }>();
   for (const image of images.values()) {
-    if (!image.date) continue;
-    const sameDay = byDate.get(image.date);
-    if (sameDay) sameDay.push(image);
-    else byDate.set(image.date, [image]);
+    const { date } = image;
+    if (!date) continue;
+    const key = `${date} ${image.location.slug}`;
+    const sameOuting = byOuting.get(key);
+    if (sameOuting) sameOuting.images.push(image);
+    else byOuting.set(key, { date, images: [image] });
   }
 
-  return [...byDate.entries()]
-    .sort(([a], [b]) => b.localeCompare(a))
-    .map(([date, sameDay]) => {
-      sameDay.sort(newestFirst);
-      const { location } = sameDay[0];
-      const elsewhere = sameDay.find((i) => i.location.slug !== location.slug);
-      if (elsewhere)
-        fail(
-          `${elsewhere.id}.mdx`,
-          `${date} already has photos from "${location.slug}"; one date must be one location, since the feed publishes a date as a single outing`,
-        );
-      const speciesNames = [...new Set(sameDay.map((i) => i.species.name))].sort((a, b) => a.localeCompare(b));
-      return { date, location, images: sameDay, speciesNames };
-    });
+  return [...byOuting.values()]
+    .map(({ date, images: sameOuting }) => {
+      sameOuting.sort(newestFirst);
+      const speciesNames = [...new Set(sameOuting.map((i) => i.species.name))].sort((a, b) => a.localeCompare(b));
+      return { date, location: sameOuting[0].location, images: sameOuting, speciesNames };
+    })
+    .sort((a, b) => newestFirst(a.images[0], b.images[0]));
 }
 
 export function imagesForSpecies(slug: string): ImageEntry[] {
