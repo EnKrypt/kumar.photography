@@ -3,4 +3,5 @@ export const locations = {
   'turahalli-tree-park': { name: 'Turahalli Tree Park, Bengaluru', ebird: 'L12108494' },
   'valley-school': { name: 'The Valley School, Bengaluru', ebird: 'L2407941' },
   'kasai-rinkai-park': { name: 'Kasai Rinkai Park, Tokyo', ebird: 'L1896754' },
+  'tokyo-port-wild-bird-park': { name: 'Tokyo Port Wild Bird Park', ebird: 'L927941' },
 } satisfies Record<string, { name: string; ebird: string }>;
