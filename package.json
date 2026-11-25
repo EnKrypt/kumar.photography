@@ -10,6 +10,7 @@
     "dev": "react-router dev",
     "build": "react-router build",
     "preview": "node scripts/serve.mjs",
+    "deploy": "sh scripts/deploy.sh",
     "typecheck": "react-router typegen && tsc",
     "clean": "rm -rf build/ .react-router/ .claude/"
   },
