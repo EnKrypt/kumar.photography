@@ -72,7 +72,6 @@ export const species = {
   'green-winged-teal': { name: 'Green-winged Teal', ebird: 'gnwtea' },
   'oriental-turtle-dove': { name: 'Oriental Turtle-Dove', ebird: 'ortdov' },
   'white-cheeked-starling': { name: 'White-cheeked Starling', ebird: 'whcsta1' },
-  'black-kite-black-eared': { name: 'Black Kite (Black-eared)', ebird: 'blkkit2' },
   'common-kingfisher': { name: 'Common Kingfisher', ebird: 'comkin1' },
   'common-pochard': { name: 'Common Pochard', ebird: 'compoc' },
   'eurasian-wigeon': { name: 'Eurasian Wigeon', ebird: 'eurwig' },

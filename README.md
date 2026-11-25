@@ -2,7 +2,7 @@
 
 ## [kumar.photography](https://kumar.photography)
 
-My bird photography website. Go to https://arvind.io for my blog.
+My bird photography website. For my bloc, go to https://arvind.io instead.
 
 This is a statically generated site. Created using React Router 8 and Vite 8.
 
@@ -12,11 +12,12 @@ If you want to generate a build for this website for whatever reason, you'll nee
 
 1. Edit the contents of `app/content/site.ts` with accurate information for your use case, and to avoid impersonating me (that's a big no-no).
 2. Populate `app/content/images/` and add images of your own. This repo does not contain the images that are used by https://kumar.photography.
-3. Match `app/content/images/*.mdx` to match the same file names as the images with appropriate content.
-4. Edit the contents of `app/content/species.ts` and `app/content/locations.ts` with information pertaining to your images.
-5. Replace `app/content/dp.jpg` with your display picture.
-6. Replace `app/content/preview.jpg` with your website's banner.
-7. Finally modify `app/content/landing.tsx` and `app/content/about.mdx` with accurate information for your use case, and to avoid impersonating me.
+3. The image files should be named as `YYYY-MM-DD-species-name.jpg`. If you have multiple images of the same species for the same date, you can add a suffix to the file name to distinguish them, for example `-1`, `-2` and so on.
+4. Match `app/content/images/*.mdx` to match the same file names as the images with appropriate content. This will be used for recording captions and metadata for each image. See [Content](#content) below for the format with examples.
+5. Edit the contents of `app/content/species.ts` and `app/content/locations.ts` with information pertaining to your images.
+6. Replace `app/content/dp.jpg` with your display picture.
+7. Replace `app/content/preview.jpg` with your website's banner.
+8. Finally modify `app/content/landing.tsx` and `app/content/about.mdx` with accurate information for your use case, and to avoid impersonating me.
 
 If you don't populate the images, or leave any broken references to file names, species or location slugs, the build will fail.
 
@@ -44,7 +45,10 @@ npm run typecheck
 Each photograph is `images/<id>.jpg` plus `images/<id>.mdx`, where the filename is the image
 ID. Species and location pages sort by that ID, newest first, so it must start with a sortable
 date. Frontmatter holds the metadata; the MDX body is an optional caption, for photographs
-with something worth pointing out:
+with something worth pointing out.
+
+Let's take an example where we added an image with the file name `2026-01-31-little-egret-4.jpg`.
+We'll also need to add a file named `2026-01-31-little-egret-4.mdx` for caption and metadata info, with the contents being:
 
 ```mdx
 ---

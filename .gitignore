@@ -1,8 +1,5 @@
 # Photographs (CC BY-NC-ND 4.0, see LICENSE-PHOTOS.md) are excluded from the repo
-app/content/images/*.jpg
-app/content/images/*.jpeg
-app/content/images/*.png
-app/content/images/*.webp
+app/content/images/*
 
 node_modules/
 build/
