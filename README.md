@@ -14,7 +14,7 @@ If you want to generate a build for this website for whatever reason, you'll nee
 2. Populate `app/content/images/` and add images of your own. This repo does not contain the images that are used by https://kumar.photography.
 3. Match `app/content/images/*.mdx` to match the same file names as the images with appropriate content.
 4. Edit the contents of `app/content/species.ts` and `app/content/locations.ts` with information pertaining to your images.
-5. Add `app/content/dp.jpg` with your display picture.
+5. Replace `app/content/dp.jpg` with your display picture.
 6. Replace `app/content/preview.jpg` with your website's banner.
 7. Finally modify `app/content/landing.tsx` and `app/content/about.mdx` with accurate information for your use case, and to avoid impersonating me.
 
